@@ -1,0 +1,28 @@
+.reveal section img {
+    border: none;
+    box-shadow: none;
+}
+
+.icon-line {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.icon-line img {
+    height: 50px;
+    width: 50px;
+}
+
+img[alt$="=:"] {
+    float: right;
+    padding-left: 5vw;
+    max-width: 20vw;    
+}
+
+img[alt^=":="] {
+    float: left;
+    padding-right: 5vw;
+    max-width: 20vw;    
+}
+
