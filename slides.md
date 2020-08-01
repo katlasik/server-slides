@@ -11,8 +11,7 @@ title: Wprowadzenie do serwerów
 
 #### Co oznaczają pojęcia serwer i klient?
 
-* **Serwer** oznacza aplikcję dostarczającą daną funkcję (dane, strony, aplikacje) innym programom lub komputerom (*klientom*).
-**Serwer** może oznaczać również maszynę (*fizyczną lub wirtualną*) na której uruchamiana jest aplikacja.
+* **Serwer** oznacza aplikcję dostarczającą daną funkcję (dane, strony, aplikacje) innym programom lub komputerom (*klientom*). **Serwer** może oznaczać również maszynę (*fizyczną lub wirtualną*) na której uruchamiana jest aplikacja.
 
 * **Klient** oznacza aplikację lub użytkownika korzystającego z usług świadczonych przez serwer.
 
@@ -45,12 +44,12 @@ Serwer nie może samodzielnie nawiązać komunikacji z klientem. Oznacza to, że
 
 ---
 
-Aby umożliwić przesyłanie danych w kierunku *serwer → klient* możemy zastosować różne techniki:
+Techniki komunikacji *serwer → klient*:
 
-* **pooling** polega na okresowym wysyłaniu zapytani od klienta, aby pobrać dane z serwera
-* **long pooling** polega na nawiąniu połączenia z bardzo długim okresem **timeout**. Serwer co jakiś czas przesyła nowe dane, cały czas korzystając z tego samego połączenia.
-* **Server Sent Events** - model komunikacji **publisher-subsriber**.  Używając tej techniki klient subskrybuje się do serwera, który publikuje nowe dane. Ten model komunikacji również pracuje w trybie **half-duplex**, ale w stronę *klient → serwer*.
-* **Web Sockets** - model oparty na protokołach **WS** lub **WSS** zapewnia komunikację **full-duplex** pomiędzy serwerem, a klientem.
+* **pooling** polega na okresowym wysyłaniu zapytani od klienta, aby pobrać dane z serwera.
+* **long pooling** polega na nawiązaniu połączenia z bardzo długim okresem **timeout**. Serwer co jakiś czas przesyła nowe dane, cały czas korzystając z tego samego połączenia.
+* **Server Sent Events** - model komunikacji **publisher-subscriber**.  Używając tej techniki, klient subskrybuje się do serwera, który publikuje nowe dane. Ten model komunikacji również pracuje w trybie **half-duplex**, ale w stronę *klient → serwer*.
+* **Web Sockets** - model oparty na protokołach **WS** lub **WSS** zapewnia komunikację **full-duplex** pomiędzy serwerem,a klientem.
 
 ---
 
@@ -182,11 +181,11 @@ Pliki konfiguracyjne określają domyślne poziomy logowania dla konkretnych pak
 
 Framework **SLF4J** wyróżnia następujące poziomy logowania:
 
-* **FATAL** - poważne błędy powodujące przedwczesne zakooczenie działania aplikacji.
+* **FATAL** - poważne błędy powodujące przedwczesne zakońoczenie działania aplikacji.
 * **ERROR** - błędy wykonania.
 * **WARN** - ostrzeżenia.
 * **INFO** - informacje o działanu aplikacji.
-* **DEBUG** - szczegółowe informacje dotyczące przepływu w działaniu aplikacji, w celach diagnostycznych.
+* **DEBUG** - szczegółowe informacje dotyczące działania aplikacji, w celach diagnostycznych.
 * **TRACE** - najbardziej szczegółowe informacje.
 * **OFF** - wyączone logowanie.
 
@@ -304,7 +303,7 @@ Różnica pomiędzy kontenerami a serwerami aplikacji polega na tym, że serwery
 #### Jakarta EE
 
 **Jakarta EE (Enterprise Edition)** to nowa nazwa dla specyfikacji **Java EE**. **Jakarta EE** zapewnia dostęp do dodatkowych funkcji i bibliotek jezyka Java
-ułatwiających tworzeni *komercyjnych* aplikacji.
+ułatwiających tworzenie *komercyjnych* aplikacji.
 
 ![Jakarta EE](images/javaee.png)
 
@@ -339,7 +338,7 @@ java -Dserver.port=9999 \
 
 ---
 
-**WAR** (**W**eb **A**pplication a**R**chive) - archiwum używane do dystrybucji plików klas oraz zasabów, które razem stanowią aplikację webową.
+**WAR** (**W**eb **A**pplication a**R**chive) - archiwum używane do dystrybucji plików klas oraz zasobów, które razem stanowią aplikację webową.
 Aplikację webową spakowaną do pliku **war** musimy uruchomić przesyłając ją do 
 kontera aplikacji webowych jak **Tomcat** albo **Jetty**.
 
@@ -347,10 +346,10 @@ kontera aplikacji webowych jak **Tomcat** albo **Jetty**.
 
 Archiwum **WAR** może zawierać następujące pliki i katalogi:
 
-* **META-INF** - zawiera meta-informacje o archiwum
+* **META-INF** - zawiera meta-informacje o archiwum.
 * **WEB-INF** - zawiera elementy aplikacji:
     * Plik **web.xml** zawiera konfigurację aplikacji. Plik **web.xml** znajduje się również w instalacji serwera i jest używany jako domyślny dla wszystkich aplikacji. Ustawienia z pliku spakowanego w archiwum mają priorytet nad ustawieniami z pliku z serwera.
-    * Katalog **lib** zawiera pliki **JAR** zawierające biblioteki
+    * Katalog **lib** zawiera pliki **JAR** zawierające biblioteki.
     * Katalog **classes** zawiera skompilowany kod aplikacji oraz statyczne zasoby (takie jak szablony lub innej pliki konfiguracyjne)
 
 ---
@@ -432,7 +431,7 @@ zainstalowany w kontekście `/dogs`. Jeżeli zainstalujemy plik o nazwie **ROOT.
 * **CATALINA_HOME** - określa miejsce instalacji Tomcata 
 * **CATALINA_OPTS** - przekazuje do procesu Java opcje uruchomienia Tomcata
 * **CATALINA_TMPDIR** - lokalizacja katalogu na pliki tymczasowe
-* **JAVA_HOME** - wskazuje wersję Javy używaną przez Tomcata, 
+* **JAVA_HOME** - wskazuje wersję Javy używaną przez Tomcata 
 * **JAVA_OPTS** - ustawienie zmiennych środowiskowych przekazywanych Java
 
 ---
@@ -472,10 +471,10 @@ zainstalowany w kontekście `/dogs`. Jeżeli zainstalujemy plik o nazwie **ROOT.
 
 ##### Parametry host
 
-* Parametr **name** - nazwa wirtualnego hosta,
-* Parametr **appBase** - nazwa katalogu, w którym Tomcat szuka wdrożonych aplikacji,
-* Parametr **autoDeploy** - określa czy serwer ma automatycznie wdrażać aplikacje,
-* Parametr **unpackWARs** - czy aplikacje mają być rozpakowane podczas wdrażania
+* Parametr **name** - nazwa wirtualnego hosta.
+* Parametr **appBase** - nazwa katalogu, w którym Tomcat szuka wdrożonych aplikacji.
+* Parametr **autoDeploy** - określa czy serwer ma automatycznie wdrażać aplikacje.
+* Parametr **unpackWARs** - czy aplikacje mają być rozpakowane podczas wdrażania.
 
 ---
 
@@ -586,7 +585,7 @@ Dyrektywa **proxy_pass** pozwala nam przekazać polecenie dalej.
 ```
 ---
 
-Mechanizm używający dyrektywy **rewrite** pozwala zrobić **formard**:
+Mechanizm używający dyrektywy **rewrite** pozwala zrobić **forward**:
 
 ```
 server {
@@ -596,7 +595,7 @@ server {
 }
 ```
 
-Dodajac do **rewrite** parametr **pernament** albo **redirect** możmy zrobić pernamentne lub tymczasowe przekierowanie.
+Dodajac do **rewrite** parametr **pernament** albo **redirect** możmy zrobić stałe lub tymczasowe przekierowanie.
 
 
 ---
@@ -627,19 +626,4 @@ polega na uruchomieniu skryptu `/bin/add-user` i postępowaniu zgodnie ze wskaz�
 * Katalog **domain** analogicznie jak **standalone**, ale dla trybu domenowego.
 * Katalog **modules** zawiera moduły używane przez serwer.
 * Katalog **welcome-content** zawiera przykłady.
-
----
-
-<div class="icon-line">
-    ![gihub](images/github.svg)&nbsp;&nbsp;&nbsp;[https://github.com/katlasik](https://github.com/katlasik)
-</div>
-<div class="icon-line">
-    ![Mail](images/mail.png)&nbsp;&nbsp;&nbsp;[krzysztof.atlasik@pm.me](mailto:krzysztof.atlasik@pm.me)
-</div>
-
-
-
-
-
-
 
