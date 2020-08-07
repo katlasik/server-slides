@@ -540,21 +540,43 @@ Serwery WWW pozwalają na konfigurowania swojego działania poprzez pliki konfig
 Odpowiednie skonfigurowanie serwera pozwala na przykład, na przekierowanie ruchu, odrzucanie połączeń lub rozdzielanie obciążenia.
 
 ---
+
+Przykładowo serwer **NGINX** można konfigurować za pomocą modyfikacji **nginx.conf**.
+
+```
+events {
+     worker_connections  4096;
+     use                 poll;
+}
+
+http {
+    server {
+        listen 80;
+
+        location / {
+            root /var/www;
+        }
+    }
+}
+```
+
+---
+
 **Przekierowanie** (*ang. redirect*) - serwer wysyła do klienta odpowiedź z statusem **3xx** oraz nagłówkiem wskazującym na miejsce przekierowania.
 Następnie klient wykonuje ponownie zapytanie do nowej lokalizacji.
-   * **301 Moved Permanently** - zasób został przeniesiony na nową lokalizację na stałe.
-   ![Redirect =:](images/redirect.png)
-   * **302 Found / 303 See other / 307 Temporary Redirect** - zasób tymczasowo przeniesiony na nową lokalizację.
-   
+![Redirect](images/redirect.png)
+
+---
+
+* **301 Moved Permanently** - zasób został przeniesiony na nową lokalizację na stałe.
+* **302 Found / 303 See other / 307 Temporary Redirect** - zasób tymczasowo przeniesiony na nową lokalizację.
+
 ---
 
 **Przesłanie dalej** (*ang. forward*) - żądanie jest przekierowywane w celu dalszego przetwarzania na inny adres. Akcja jest niewidoczna z punktu widzenia klienta (przeglądarki).
    ![Forward](images/forward.png)
 
-
 ---
-
-Przykładowo serwer **NGINX** można konfigurować za pomocą modyfikacji **nginx.conf**.
 
 Używając dyrektywy **upstream** możemy skonfigurować **load-balancer**:
 
