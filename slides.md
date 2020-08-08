@@ -445,6 +445,27 @@ zainstalowany w kontekście `/dogs`. Jeżeli zainstalujemy plik o nazwie **ROOT.
 
 ---
 
+Przykładowy plik `server.xml` może wyglądać następująco:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+  <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+  <Service name="Catalina">
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+    <Engine name="Catalina" defaultHost="localhost">
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+      </Host>
+    </Engine>
+  </Service>
+</Server>
+```
+
+---
+
 ##### Elementy pliku server.xml
 
 * **Server** - nadrzędny element (może być tylko jeden), reprezentuje konfigurację całego serwera.
@@ -456,7 +477,7 @@ zainstalowany w kontekście `/dogs`. Jeżeli zainstalujemy plik o nazwie **ROOT.
 
 ---
 
-##### Parametry connection
+##### Parametry connector
 
 
 * Parametr **port** - port na którym prowadzony jest nasłuch.
